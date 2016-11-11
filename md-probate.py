@@ -1,4 +1,5 @@
 # md_probate -- Maryland Probate Fees Calculator
+# v. 2.0 (2016-11-11)
 # Based on Md. Estates and Trusts sec. 2-206 & 7-601
 #
 # (C) 2016 S.M. Oliva <oswriter@skipoliva.com>
@@ -31,18 +32,27 @@ import locale
 locale.setlocale( locale.LC_ALL, 'en_US.UTF-8' )
 
 message = "Welcome to the Maryland Probate Fees Calculator"
-message +="\nby S.M. Oliva <skip@skipoliva.com>."
+message +="\nby S.M. Oliva <skip@skipoliva.com>"
 message +="\nThis program is published under a BSD License."
 message +="\n\nPlease enter a dollar amount without any currency symbols ($) or commas (,)."
 print(message)
 
-gross_estate = input("\nWhat is the value of the decedent's Maryland gross estate? ")
-gross_estate = int(gross_estate)
+while True:
+    gross_estate = input("\nWhat is the value of the decedent's Maryland gross estate? ")
 
+    try:
+        gross_estate = int(gross_estate)
+    except ValueError:
+        print("Please enter a dollar amount without any currency symbols ($) or commas (,).")
+    else:
+        break
+                  
 # Calculation of Probate Fees under Md. Estates and Trusts §2-206(b)(2),
 # for estates of decedents dying on or after 7/1/1989.
 
-if gross_estate < 10000:
+if gross_estate < 0:
+    fee = "$0.00"
+elif gross_estate < 10000:
     fee = "$50.00"
 elif gross_estate < 20000:
     fee = "$100.00"
@@ -74,7 +84,9 @@ print("\nThe Maryland probate fee for this estate is " + fee + ".")
 # under Md. Estates and Trusts §7-601(b),
 # for estates of decedents dying on or after 1/1/1992.
 
-if gross_estate < 20000:
+if gross_estate < 0:
+    comm = 0
+elif gross_estate < 20000:
     comm = .09 * gross_estate
 else:
     comm = 1800 + (0.036 * (gross_estate - 20000))
