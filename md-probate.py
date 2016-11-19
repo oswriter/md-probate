@@ -1,6 +1,6 @@
 # md_probate -- Maryland Probate Fees Calculator
-# v. 2.0 (2016-11-11)
-# Based on Md. Estates and Trusts sec. 2-206 & 7-601
+# v. 2.1 (2016-11-18)
+# Based on Md. Estates and Trusts secs. 2-206 & 7-601
 #
 # (C) 2016 S.M. Oliva <oswriter@skipoliva.com>
 #
@@ -47,7 +47,7 @@ while True:
     else:
         break
                   
-# Calculation of Probate Fees under Md. Estates and Trusts §2-206(b)(2),
+# Calculation of Probate Fees under Md. Estates and Trusts sec. 2-206(b)(2),
 # for estates of decedents dying on or after 7/1/1989.
 
 if gross_estate < 0:
@@ -81,7 +81,7 @@ else:
 print("\nThe Maryland probate fee for this estate is " + fee + ".")
 
 # Calculation of PR's Commissions and/or Attorney's Fees
-# under Md. Estates and Trusts §7-601(b),
+# under Md. Estates and Trusts  sec. 7-601(b),
 # for estates of decedents dying on or after 1/1/1992.
 
 if gross_estate < 0:
